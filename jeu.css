@@ -1,0 +1,168 @@
+html {
+  background-color: #3d0483;
+}
+
+body {
+  margin: 0;
+  font-family : arcane nine;
+}
+
+header {
+  height:75px;
+  background-color: #a680e6;
+  margin:0px auto;
+  position:static;
+}
+
+p {
+  align-content:center;
+  font-size:1.1em;
+  letter-spacing: 0.1em;
+  height:30px;
+  background-color: #a680e6;
+  color: #ffffff;
+  margin:0px auto;
+  text-align: center;
+}
+
+h1 {
+  font-size: 65px;
+  color: #ffffff;
+  text-align: center;
+}
+
+h2 {
+  font-size: 20px;
+  letter-spacing: 0.1em;
+  background-color: #a680e6;
+  color: #ffffff;
+  text-align: center;
+}
+
+.bloc-fixe {
+  text-align: center;
+  block-size: 400px;
+  position:fixed;
+  border:solid 3px white;
+  width:250px;
+  top:200px;
+  left:10px;
+}
+
+button {
+  display:inline-block;
+  margin:5px;
+  text-align:center;
+  padding:8px 20px;
+  letter-spacing: 0.3em;
+  color:#ffffff;
+  background-color: hsla(200, 77%, 71%, 0.561);
+  border:solid;
+  border-color: rgb(141, 199, 254);
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+button:active, button.pushed{
+  background-color: rgb(141, 199, 254);
+}
+
+.GameContainer {
+  width:535px;
+  height:560px;
+  position:fixed;
+  left:550px;
+  top:150px;
+  align-content: center;
+  display:grid;
+}
+
+.GameContainer.small {
+  grid-template:repeat(4,1fr)/repeat(4, 1fr);
+  gap:10px;
+}
+  
+.GameContainer.big {
+  grid-template:repeat(6,1fr)/repeat(6, 1fr);
+  gap:5px;
+}
+
+.tile {
+  position: relative;
+  background-color: #a680e6;
+  border:solid;
+  border-color:#eddefb;
+  border-radius:5px;
+  cursor:pointer;
+  
+}
+
+.tile.flip {
+  transform: rotateY(180deg);
+  transition: all 0.5s ease;
+  transform-style: preserve-3d;
+}
+
+.front {
+  position:absolute;
+  height:100%;
+  width:100%;
+  backface-visibility: hidden;
+}
+
+.back {
+  position:absolute;
+  height:100%;
+  width:100%;
+  backface-visibility: hidden;
+  transform: rotateY(180deg);
+}
+
+.image{
+  height:100%;
+  width:100%;
+  border-radius:2px;
+}
+
+.win {
+  position:fixed;
+  align-content: center;
+  text-align: center;
+  block-size: 100px;
+  border:solid 3px rgb(255, 255, 255);
+  border-radius: 10px;
+  width:585px;
+  top:350px;
+  left:520px;
+  background-color: #150235;
+  padding-bottom:10px;
+  visibility:hidden;
+}
+
+.congrats{
+  padding:10px;
+  font-size: 2em;
+  letter-spacing: 3px;
+  color:#ffffff;
+}
+
+.win.active {
+  transform: rotateZ(360deg);
+  transition: all 1s ease;
+  transform-style: preserve-3d;
+  visibility: visible;
+  z-index: 1;
+}
+
+.validationContainer {
+  position:fixed;
+  display: none;
+  text-align: center;
+  color:#ffffff;
+  border-radius: 10px;
+  width:200px;
+  top:400px;
+  left:700px;
+  background-color: #150235;
+  padding:15px;
+}

@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="fr">
+
+    <head>
+        <meta charset="utf-8">
+        <title>Le Jeu</title>
+        <link href="jeu.css" rel="stylesheet">
+    </head>
+
+    <body>
+
+        <div class="bloc-fixe">
+            <p> Grid difficulty </p>
+            <br>
+            <div class="bouton">
+                <button id="4">4x4</button>
+                <button id="6">6x6</button>
+            </div>
+            <br>
+            <p> Validation difficulty </p>
+            <br>
+            <div class="bouton">
+                <button id="beginner">Beginner</button>
+                <button id="initiate">Initiate</button>
+                <button id="expert">Expert</button>
+            </div>
+            <h2>Time</h2>
+        </div>
+
+
+        <header> 
+            <h1>How To Memorize Lugia ?</h1>
+        </header>
+    
+        <div class="GameContainer">
+        </div>
+
+    
+        <div class="win">
+             <div class="congrats"> CONGRATULATIONS ! </div>
+             <button onclick="window.location.reload();">RESTART</button>
+        </div>
+        
+        <div class="validationContainer">
+            <div class="initiate">
+                <label for="gen"> Guess the generation to validate : </label>
+                <input type="number" id="gen">
+            </div>
+       </div>
+
+        
+        <script src="jeu.js"></script>
+
+    </body>
+</html>
