@@ -5,16 +5,14 @@ const validation = document.querySelector(".validationContainer");
 var firstTile = null;
 var finished = true;
 var numberRevealed = 0;
-var size=0;
-var gen=0;
 
 button4 = document.getElementById("4");
 button6 = document.getElementById("6");
 buttonBeginner = document.getElementById("beginner");
 buttonInitiate = document.getElementById("initiate");
 buttonExpert = document.getElementById("expert");
-input = document.getElementById("gen");
-
+input = document.getElementById("answer");
+question = document.getElementById("question");
 
 
 function buildTile(id,size){
@@ -59,40 +57,34 @@ async function game(tile,size){
         return;
     }
     //if 2nd card
-    else { 
-        finished = false;
-        if (firstTile.getAttribute("tile-id")===tile.getAttribute("tile-id")){ //match
-            //validation for initiate level
-            if (level==="initiate"){
-                gen = await playerInput();
-                if (!(validate())) {
-                    tile.classList.toggle("flip");
-                    firstTile.classList.toggle("flip")}
-                else {
-                    firstTile.setAttribute("revealed","true");
-                    tile.setAttribute("revealed","true");
-                    numberRevealed += 2}
-                firstTile = null;
-                finished = true;
-                }
-            //no need for validation
-            else {
-                firstTile.setAttribute("revealed","true");
-                tile.setAttribute("revealed","true");
-                firstTile = null;
-                numberRevealed += 2;
-                finished=true}
-            } 
-
-        else { // not match
-            setTimeout(() => {
-                tile.classList.toggle("flip");
-                firstTile.classList.toggle("flip");
-                firstTile = null;
-                finished = true;
-            }, 1000);
+    finished = false;
+    if (firstTile.getAttribute("tile-id")===tile.getAttribute("tile-id")){ //match
+        if (!(level === 'beginner')) {answer = await playerInput()}
+        if (valid()) {
+            console.log('validé');
+            firstTile.setAttribute("revealed","true");
+            tile.setAttribute("revealed","true");
+            numberRevealed += 2;
+            firstTile = null;
+            finished = true;
         }
+        else{
+            console.log('pas validé');
+            tile.classList.toggle("flip");
+            firstTile.classList.toggle("flip");
+            firstTile = null;
+            finished = true;
+        }
+    } 
+    else { // not match
+        setTimeout(() => {
+            tile.classList.toggle("flip");
+            firstTile.classList.toggle("flip");
+            firstTile = null;
+            finished = true;
+        }, 1000);
     }
+
     //end of game ?
     if (numberRevealed===size*size){
         setTimeout(() => {   
@@ -105,8 +97,10 @@ async function game(tile,size){
 function playerInput() {
     return new Promise((resolve) => {
       validation.style.display = "block";
+      if (level === "initiate") question.innerHTML = "Guess the generation";
+      if (level === "expert") question.innerHTML = "Guess the pokemon id";
       function event (){
-        var value = parseInt(input.value);
+        var value = input.value;
         console.log(value);
         validation.style.display = 'none'; 
         resolve(value);
@@ -174,10 +168,18 @@ function getGeneration(id){
 }
 
 
-function validate(){
-    if (getGeneration(firstTile.getAttribute("tile-id"))===gen) return(true);
-    else {return(false)}
+function valid(){
+    if (level==='beginner') return true;
+    if (level==='initiate'){
+        if (getGeneration(firstTile.getAttribute("tile-id"))===parseInt(answer)) return(true);
+        else {return(false)}
+    }
+    if (level==='expert'){
+        if (firstTile.getAttribute("tile-id")===answer) return(true);
+        else {return(false)}
+    }
 }
+
 
 
 //For the grid reset
@@ -210,7 +212,7 @@ buttonBeginner.addEventListener("click", () => {
     buttonBeginner.classList.add("pushed");
     buttonInitiate.classList.remove("pushed");
     buttonExpert.classList.remove("pushed");
-    level = "Beginner";
+    level = "beginner";
 });
 
 buttonInitiate.addEventListener("click", () => {
