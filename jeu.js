@@ -11,6 +11,7 @@ button6 = document.getElementById("6");
 buttonBeginner = document.getElementById("beginner");
 buttonInitiate = document.getElementById("initiate");
 buttonExpert = document.getElementById("expert");
+
 input = document.getElementById("answer");
 question = document.getElementById("question");
 
@@ -42,7 +43,6 @@ function buildTile(id,size){
 }
 
 
-
 async function game(tile,size){
     //if already revealed, same tile, or turn not finished
     var isRevealed = tile.getAttribute("revealed");
@@ -61,7 +61,7 @@ async function game(tile,size){
     if (firstTile.getAttribute("tile-id")===tile.getAttribute("tile-id")){ //match
         if (!(level === 'beginner')) {answer = await playerInput()}
         if (valid()) {
-            console.log('validé');
+            console.log('valid');
             firstTile.setAttribute("revealed","true");
             tile.setAttribute("revealed","true");
             numberRevealed += 2;
@@ -69,14 +69,14 @@ async function game(tile,size){
             finished = true;
         }
         else{
-            console.log('pas validé');
+            console.log('not valid');
             tile.classList.toggle("flip");
             firstTile.classList.toggle("flip");
             firstTile = null;
             finished = true;
         }
     } 
-    else { // not match
+    else { // mismatch
         setTimeout(() => {
             tile.classList.toggle("flip");
             firstTile.classList.toggle("flip");
@@ -84,8 +84,7 @@ async function game(tile,size){
             finished = true;
         }, 1000);
     }
-
-    //end of game ?
+    //end of game
     if (numberRevealed===size*size){
         setTimeout(() => {   
             win.classList.add("active");
@@ -95,23 +94,24 @@ async function game(tile,size){
 
 
 function playerInput() {
+    //create a promise
     return new Promise((resolve) => {
-      validation.style.display = "block";
-      if (level === "initiate") question.innerHTML = "Guess the generation";
-      if (level === "expert") question.innerHTML = "Guess the pokemon id";
-      function event (){
-        var value = input.value;
-        console.log(value);
-        validation.style.display = 'none'; 
-        resolve(value);
-      }
-      input.addEventListener('keypress', (e) => {
-        if (e.key === 'Enter'){ event() }
-      })
-      input.removeEventListener('keypress', event);
+        //display the question
+        validation.style.display = "block";
+        if (level === "initiate") question.innerHTML = "Guess the generation";
+        if (level === "expert") question.innerHTML = "Guess the pokemon id";
+        //define event : send value
+        function event (){
+            var value = input.value;
+            validation.style.display = 'none'; 
+            resolve(value);
+        }
+        input.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter'){ event() }
+        })
+        input.removeEventListener('keypress', event);
     })
   }
-
 
 
 function displayGrid(size){
@@ -141,8 +141,6 @@ function displayGrid(size){
 }
 
 
-
-
 function chosePokemonGrid(size){
     var pokemonID=[];
     while (pokemonID.length < (size*size)){
@@ -155,7 +153,6 @@ function chosePokemonGrid(size){
     pokemonID = pokemonID.sort(() => Math.random() - 0.5);
     return pokemonID;
 }
-
 
 
 function getGeneration(id){
@@ -181,15 +178,12 @@ function valid(){
 }
 
 
-
-//For the grid reset
+//grid reset
 function removeChild(grid) {
     while (grid.firstChild) {
         grid.removeChild(grid.firstChild);
     }
 }
-
-
 
 
 //Effects of buttons (maybe not optimal...)
@@ -230,8 +224,6 @@ buttonExpert.addEventListener("click", () => {
     buttonExpert.classList.add("pushed");
     level = "expert";
 });
-
-
 
 
 
