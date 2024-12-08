@@ -98,6 +98,7 @@ function playerInput() {
     return new Promise((resolve) => {
         //display the question
         validation.style.display = "block";
+        input.focus();
         if (level === "initiate") question.innerHTML = "Guess the generation";
         if (level === "expert") question.innerHTML = "Guess the pokemon id";
         //define event : send value

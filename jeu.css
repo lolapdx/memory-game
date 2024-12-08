@@ -8,10 +8,13 @@ body {
 }
 
 header {
-  height:75px;
+  width:100%;
+  height:12%;
+  margin-top: 3%;
+  align-content: center;
+  text-align: center;
   background-color: #a680e6;
-  margin:0px auto;
-  position:static;
+  position:fixed;
 }
 
 p {
@@ -26,9 +29,9 @@ p {
 }
 
 h1 {
-  font-size: 65px;
+  display:contents;
+  font-size:3rem;
   color: #ffffff;
-  text-align: center;
 }
 
 h2 {
@@ -40,13 +43,24 @@ h2 {
 }
 
 .bloc-fixe {
-  text-align: center;
-  block-size: 400px;
   position:fixed;
+  text-align: center;
   border:solid 3px white;
-  width:250px;
-  top:200px;
-  left:10px;
+  width:15%;
+  height:50%;
+  margin-left:5%;
+  top: 30%;
+}
+
+.psyduck {
+  position:fixed;
+  right:15%;
+  top:38%;
+  width: 10%;
+}
+
+img {
+  width:100%;
 }
 
 button {
@@ -68,11 +82,11 @@ button:active, button.pushed{
 }
 
 .GameContainer {
-  width:535px;
-  height:560px;
+  width:33.3%;
+  height:70%;
   position:fixed;
-  left:550px;
-  top:150px;
+  left:33.3%;
+  top:22%;
   align-content: center;
   display:grid;
 }
