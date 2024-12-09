@@ -111,6 +111,7 @@ function playerInput() {
             if (e.key === 'Enter'){ event() }
         })
         input.removeEventListener('keypress', event);
+        input.value='';
     })
   }
 

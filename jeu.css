@@ -19,12 +19,12 @@ header {
 
 p {
   align-content:center;
-  font-size:1.1em;
   letter-spacing: 0.1em;
-  height:30px;
+  padding:3%;
+  margin-top: 0px;
+  margin-bottom: 5%;
   background-color: #a680e6;
   color: #ffffff;
-  margin:0px auto;
   text-align: center;
 }
 
@@ -47,7 +47,6 @@ h2 {
   text-align: center;
   border:solid 3px white;
   width:15%;
-  height:50%;
   margin-left:5%;
   top: 30%;
 }
@@ -64,10 +63,11 @@ img {
 }
 
 button {
-  display:inline-block;
-  margin:5px;
+  position: relative;
+  margin:5%;
+  margin-top: 0px;
   text-align:center;
-  padding:8px 20px;
+  padding:5px 15px;
   letter-spacing: 0.3em;
   color:#ffffff;
   background-color: hsla(200, 77%, 71%, 0.561);
@@ -142,20 +142,20 @@ button:active, button.pushed{
   position:fixed;
   align-content: center;
   text-align: center;
-  block-size: 100px;
   border:solid 3px rgb(255, 255, 255);
   border-radius: 10px;
-  width:585px;
-  top:350px;
-  left:520px;
+  right:30%;
+  top:45%;
+  left:30%;
   background-color: #150235;
-  padding-bottom:10px;
-  visibility:hidden;
+  padding-bottom:5px;
+  visibility: hidden;
 }
 
 .congrats{
+  position: relative;
   padding:10px;
-  font-size: 2em;
+  font-size:2rem;
   letter-spacing: 3px;
   color:#ffffff;
 }
@@ -174,9 +174,9 @@ button:active, button.pushed{
   text-align: center;
   color:#ffffff;
   border-radius: 10px;
-  width:200px;
-  top:400px;
-  left:700px;
+  right:40%;
+  top:50%;
+  left:40%;
   background-color: #150235;
   padding:15px;
 }
