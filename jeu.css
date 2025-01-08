@@ -53,7 +53,7 @@ h2 {
 
 .psyduck {
   position:fixed;
-  right:15%;
+  right:10%;
   top:38%;
   width: 10%;
 }
@@ -82,8 +82,8 @@ button:active, button.pushed{
 }
 
 .GameContainer {
-  width:33.3vw;
-  height:33.3vw;
+  width:60vh;
+  height:60vh;
   position:absolute;
   left:33.3%;
   top:25%;
