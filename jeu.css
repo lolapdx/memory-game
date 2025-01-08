@@ -82,27 +82,27 @@ button:active, button.pushed{
 }
 
 .GameContainer {
-  width:33.3%;
-  height:70%;
-  position:fixed;
+  width:33.3vw;
+  height:33.3vw;
+  position:absolute;
   left:33.3%;
-  top:22%;
+  top:25%;
   align-content: center;
   display:grid;
 }
 
 .GameContainer.small {
   grid-template:repeat(4,1fr)/repeat(4, 1fr);
-  gap:10px;
+  gap:2%;
 }
   
 .GameContainer.big {
   grid-template:repeat(6,1fr)/repeat(6, 1fr);
-  gap:5px;
+  gap:1%;
 }
 
 .tile {
-  position: relative;
+  position:relative;
   background-color: #a680e6;
   border:solid;
   border-color:#eddefb;
@@ -125,7 +125,7 @@ button:active, button.pushed{
 }
 
 .back {
-  position:absolute;
+  position:relative;
   height:100%;
   width:100%;
   backface-visibility: hidden;
